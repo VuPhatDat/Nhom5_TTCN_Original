@@ -11,7 +11,6 @@ import com.example.services.NhanKhauService;
 import com.example.main.QuanLyNhanKhau;
 import com.example.model.TamVang;
 
-import com.example.services.NhanKhauService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -124,7 +123,7 @@ public class DKTamVangController {
     		alert.showAndWait();
     		taoBt.getScene().getWindow().hide();
     		FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("nhan-khau.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+	        Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 	        QuanLyNhanKhau.window.setScene(scene);
     	}
     }

@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.PhanAnhManageController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -120,10 +120,10 @@ public class ThemMoiPhanAnhController implements Initializable{
     		alert.showAndWait();
     	} else {
 	    	PhanAnhServices pas = new PhanAnhServices();
-	    	pas.insertPhanAnh(Integer.valueOf(idTf.getText()), hoTenTf.getText(), noiDungTa.getText());
+	    	pas.insertPhanAnh(Integer.parseInt(idTf.getText()), hoTenTf.getText(), noiDungTa.getText());
 	    	themBt.getScene().getWindow().hide();
 	    	FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("phan-anh.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+	        Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 	        QuanLyNhanKhau.window.setScene(scene);
     	}
     }

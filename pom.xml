@@ -68,7 +68,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.nhom15_ttcn/com.example.main.QuanLyNhanKhau</mainClass>
+                            <mainClass>com.example.nhom5-ttcn/com.example.main.QuanLyNhanKhau</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

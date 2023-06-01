@@ -7,18 +7,9 @@
 }
 .button:hover
 {
--fx-background-color : #2A1C42 ;
+    -fx-background-color: #3be8b9;
 }
-.button:pressed
-{
--fx-background-color : #7156DD ;
-}
-.button:forcus 
-{
-      -fx-background-color: #7156DD;
-      -fx-border-color: #CDD1D6;
-      -fx-border-width: 0px 0px 0px 3px;
-}
+
 
 .table-view .column-header,
 .table-view .column-header-background .filler {
@@ -87,14 +78,3 @@
     -fx-border-color: derive(-fx-pie-color, 1%);
     -fx-border-width: 0px;
 }
-
-
-
-
-
-
-
-
-
-
-

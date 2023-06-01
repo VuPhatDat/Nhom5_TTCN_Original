@@ -77,7 +77,7 @@
 				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="5" />
 				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="6" />
 				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+				<Label text="(*)" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="2" />

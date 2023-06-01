@@ -151,13 +151,11 @@ public class ThemMoiHoKhauController  implements Initializable {
 			hoKhau.insertHoKhauMoi();
 			taoBt.getScene().getWindow().hide();
 			FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
-			Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+			Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 			QuanLyNhanKhau.window.setScene(scene);
 
 		}
 
 	}
-
-
 
 }

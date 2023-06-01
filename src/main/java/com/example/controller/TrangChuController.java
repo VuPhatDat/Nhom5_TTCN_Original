@@ -23,8 +23,6 @@ public class TrangChuController extends Controller implements Initializable {
     @FXML
     Text tongPhanAnh;
     @FXML
-    Text dangChoDuyet;
-    @FXML
     Text daXuLy;
 
     public TrangChuController() {
@@ -56,7 +54,7 @@ public class TrangChuController extends Controller implements Initializable {
             }
             preparedStatement.close();
 
-            query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay < NOW()";
+            query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay > NOW()";
             preparedStatement = connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -64,7 +62,7 @@ public class TrangChuController extends Controller implements Initializable {
             }
             preparedStatement.close();
 
-            query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < NOW()";
+            query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay > NOW()";
             preparedStatement = connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -72,9 +70,23 @@ public class TrangChuController extends Controller implements Initializable {
             }
             preparedStatement.close();
 
-            tongPhanAnh.setText("124");
-            dangChoDuyet.setText("12");
-            daXuLy.setText("23");
+            query = "SELECT COUNT(*) AS tong FROM phan_anh";
+            preparedStatement = connection.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                tongPhanAnh.setText(String.valueOf(rs.getInt("tong")));
+            }
+            preparedStatement.close();
+
+            query = "SELECT COUNT(*) AS tong FROM phan_anh WHERE status = 'Đã giải quyết'";
+            preparedStatement = connection.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                daXuLy.setText(String.valueOf(rs.getInt("tong")));
+            }
+            preparedStatement.close();
 
             connection.close();
         } catch (Exception e) {

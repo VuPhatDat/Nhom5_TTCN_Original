@@ -8,20 +8,21 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.services.NhanKhauService;
+import com.example.controller.NhanKhauManageController.ThongTinNhanKhauController;
 import com.example.model.NhanKhau;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -38,6 +39,8 @@ public class NhanKhauController extends Controller implements Initializable{
 	private Button thongKeBt;
 	@FXML
 	private Button phanAnhBt;
+	@FXML 
+	private TextField searchTf;
 	@FXML
     private TableView<NhanKhau> nhanKhauTv;
 	@FXML
@@ -65,8 +68,63 @@ public class NhanKhauController extends Controller implements Initializable{
 		diaChiHienNayCol.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("diaChiHienNay"));
 		nhanKhauTv.setItems(nhanKhauList);
 		showInfor();
+		
+		nhanKhauTv.setOnMousePressed(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				try {					
+					Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			    	FXMLLoader loader = new FXMLLoader();			
+					loader.setLocation(getClass().getResource("/com/example/nhankhaumanage/thong-tin-nhan-khau.fxml"));			
+					loader.load();
+					Parent root = loader.getRoot();
+					
+					ThongTinNhanKhauController thongTinNhanKhau = loader.getController();
+					thongTinNhanKhau.showInforByID(nhanKhauTv.getSelectionModel().getSelectedItem().getID());
+					
+					Stage modal_dialog = new Stage(StageStyle.DECORATED);
+			        modal_dialog.initModality(Modality.WINDOW_MODAL);
+			        modal_dialog.initOwner(stage);
+			        modal_dialog.setTitle("Thông tin nhân khẩu");
+			        Scene scene = new Scene(root);	
+					modal_dialog.setScene(scene);
+					modal_dialog.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
+	public void searchNhanKhau(ActionEvent event) {
+		nhanKhauList.clear();
+		if (searchTf.getText().trim().isEmpty()) {
+			showInfor();
+		}
+		NhanKhauService nks = new NhanKhauService();
+		ResultSet rs = nks.getNhanKhauByName(searchTf.getText());
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					NhanKhau nhanKhau = new NhanKhau();
+					nhanKhau.setID(rs.getInt("ID"));
+					nhanKhau.setHoTen(rs.getString("hoTen"));
+					nhanKhau.setNamSinh(rs.getDate("namSinh"));
+					nhanKhau.setGioiTinh(rs.getString("gioiTinh"));
+					nhanKhau.setDiaChiHienNay(rs.getString("diaChiHienNay"));
+					nhanKhauList.add(nhanKhau);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 	public void showInfor() {
     	NhanKhauService conn = new NhanKhauService();
 		ResultSet rs = conn.getNhanKhau();
@@ -117,7 +175,7 @@ public class NhanKhauController extends Controller implements Initializable{
 		Stage modal_dialog = new Stage(StageStyle.DECORATED);
         modal_dialog.initModality(Modality.WINDOW_MODAL);
         modal_dialog.initOwner(stage);
-        modal_dialog.setTitle("Them moi nhan khau");
+        modal_dialog.setTitle("Thêm mới nhân khẩu");
         Scene scene = new Scene(root);	
 		modal_dialog.setScene(scene);
 		modal_dialog.show();

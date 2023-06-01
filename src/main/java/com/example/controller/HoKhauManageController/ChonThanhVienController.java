@@ -54,7 +54,7 @@ public class ChonThanhVienController   implements Initializable {
 	private ObservableList<NhanKhau> nhanKhauList;
 
 	@FXML
-	private TextField hoTenTf;
+	private TextField searchHoTenTf;
 	@FXML
 	private Button luuThayDoiBt;
 
@@ -143,6 +143,31 @@ public class ChonThanhVienController   implements Initializable {
 		}
 	}
 
+	public void searchHoTen(ActionEvent event) {
+		nhanKhauList.clear();
+		if (searchHoTenTf.getText().trim().isEmpty()) {
+			showInforNhanKhau();
+		}
+		NhanKhauService conn = new NhanKhauService();
+		ResultSet rs = conn.getNhanKhauByName(searchHoTenTf.getText().trim());
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					NhanKhau nhanKhau = new NhanKhau();
+					nhanKhau.setID(rs.getInt("ID"));
+					nhanKhau.setHoTen(rs.getString("hoTen"));
+					nhanKhau.setNamSinh(rs.getDate("namSinh"));
+					nhanKhau.setGioiTinh(rs.getString("gioiTinh"));
+					nhanKhau.setDiaChiHienNay(rs.getString("diaChiHienNay"));
+					nhanKhauList.add(nhanKhau);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	@FXML
 	void themThanhVien(ActionEvent event) throws SQLException {

@@ -15,41 +15,60 @@
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.controller.ThongKeController">
-    <VBox style="-fx-background-color: #b6b6b6;" spacing="28">
-        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denTrangChu">
-            <ImageView fitWidth="40" fitHeight="40">
-                <Image url="@../../../image/order.png"/>
-            </ImageView>
-            <Text text="Trang Chủ"
-                  style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
-        </HBox>
-        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denNhanKhau">
-            <ImageView fitWidth="40" fitHeight="40">
-                <Image url="@../../../image/man.png"/>
-            </ImageView>
-            <Text text="Nhân Khẩu" style=" -fx-font-size: 24px;"/>
-        </HBox>
-        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denHoKhau">
-            <ImageView fitWidth="40" fitHeight="40">
-                <Image url="@../../../image/house.png"/>
-            </ImageView>
-            <Text text="Hộ Khẩu" style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
-        </HBox>
-        <HBox spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denThongKe">
-            <ImageView fitWidth="40" fitHeight="40">
-                <Image url="@../../../image/analysis.png"/>
-            </ImageView>
-            <Text text="Thống Kê" style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-font-weight: bold; -fx-fill: white"/>
-        </HBox>
-        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denPhanAnh">
-            <ImageView fitWidth="40" fitHeight="40">
-                <Image url="@../../../image/conversation.png"/>
-            </ImageView>
-            <Text text="Phản Ánh" style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
-        </HBox>
+    <VBox prefHeight="600.0" prefWidth="200.0" spacing="28.0" style="-fx-background-color: #b6b6b6; -fx-padding: 20 0 0 0">
+        <Button fx:id="trangChuBt" mnemonicParsing="false" onAction="#denTrangChu" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+                <HBox onMouseClicked="#denTrangChu" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                    <ImageView fitHeight="40" fitWidth="40">
+                        <Image url="@../../../image/order.png" />
+                    </ImageView>
+                    <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Trang Chủ" />
+                </HBox>
+            </graphic>
+        </Button>
+        <Button fx:id="nhanKhauBt" mnemonicParsing="false" onAction="#denNhanKhau" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+                <HBox onMouseClicked="#denNhanKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                    <ImageView fitHeight="40" fitWidth="40">
+                        <Image url="@../../../image/man.png" />
+                    </ImageView>
+                    <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Nhân Khẩu" />
+                </HBox>
+            </graphic>
+        </Button>
+        <Button fx:id="hoKhauBt" mnemonicParsing="false" onAction="#denHoKhau" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+                <HBox onMouseClicked="#denHoKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                    <ImageView fitHeight="40" fitWidth="40">
+                        <Image url="@../../../image/house.png" />
+                    </ImageView>
+                    <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Hộ Khẩu" />
+                </HBox>
+            </graphic>
+        </Button>
+        <Button fx:id="thongKeBt" mnemonicParsing="false" onAction="#denThongKe" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+                <HBox onMouseClicked="#denThongKe" spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand">
+                    <ImageView fitHeight="40" fitWidth="40">
+                        <Image url="@../../../image/analysis.png" />
+                    </ImageView>
+                    <Text style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white" text="Thống Kê" />
+                </HBox>
+            </graphic>
+        </Button>
+        <Button fx:id="phanAnhBt" mnemonicParsing="false" onAction="#denPhanAnh" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+                <HBox onMouseClicked="#denPhanAnh" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                    <ImageView fitHeight="40" fitWidth="40">
+                        <Image url="@../../../image/conversation.png" />
+                    </ImageView>
+                    <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Phản Ánh" />
+                </HBox>
+            </graphic>
+        </Button>
     </VBox>
     <VBox style="-fx-padding: 16 16 16 16;" spacing="24">
-        <HBox spacing="120">
+        <HBox spacing="80">
             <VBox spacing="12">
                 <HBox spacing="460">
                     <HBox alignment="CENTER" spacing="8">
@@ -104,7 +123,7 @@
                 <TableColumn text="Họ tên" prefWidth="160" fx:id="hoTenColumn"/>
                 <TableColumn text="Ngày sinh" prefWidth="160" fx:id="ngaySinhColumn"/>
                 <TableColumn text="Giới tính" prefWidth="160" fx:id="gioiTinhColumn"/>
-                <TableColumn text="Địa chỉ hiện nay" prefWidth="434" fx:id="diaChiColumn"/>
+                <TableColumn text="Địa chỉ hiện nay" prefWidth="420" fx:id="diaChiColumn"/>
             </columns>
         </TableView>
     </VBox>

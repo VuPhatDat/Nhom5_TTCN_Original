@@ -1,15 +1,26 @@
 package com.example.controller;
 
 import com.example.bean.NhanKhauBean;
+import com.example.controller.NhanKhauManageController.ThongTinNhanKhauController;
 import com.example.model.NhanKhau;
 import com.example.services.NhanKhauService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -82,6 +93,35 @@ public class ThongKeController extends Controller implements Initializable {
         diaChiColumn.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("diaChiHienNay"));
         nhanKhauTable.setItems(nhanKhauList);
         showInfor();
+
+        nhanKhauTable.setOnMousePressed(new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event event) {
+                // TODO Auto-generated method stub
+                try {
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/com/example/nhankhaumanage/thong-tin-nhan-khau.fxml"));
+                    loader.load();
+                    Parent root = loader.getRoot();
+
+                    ThongTinNhanKhauController thongTinNhanKhau = loader.getController();
+                    thongTinNhanKhau.showInforByID(nhanKhauTable.getSelectionModel().getSelectedItem().getID());
+
+                    Stage modal_dialog = new Stage(StageStyle.DECORATED);
+                    modal_dialog.initModality(Modality.WINDOW_MODAL);
+                    modal_dialog.initOwner(stage);
+                    modal_dialog.setTitle("Thông tin nhân khẩu");
+                    Scene scene = new Scene(root);
+                    modal_dialog.setScene(scene);
+                    modal_dialog.show();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void showInfor() {

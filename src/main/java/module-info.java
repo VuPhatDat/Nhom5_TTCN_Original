@@ -21,4 +21,6 @@ module com.example.nhom5_ttcn {
     
     exports com.example.controller.NhanKhauManageController;
     opens com.example.controller.NhanKhauManageController to javafx.fxml;
+    exports com.example.controller.PhanAnhManageController;
+    opens com.example.controller.PhanAnhManageController to javafx.fxml;
 }
