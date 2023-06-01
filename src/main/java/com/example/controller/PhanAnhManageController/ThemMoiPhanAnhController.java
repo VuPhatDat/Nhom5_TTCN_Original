@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.PhanAnhManageController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +21,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -120,10 +123,16 @@ public class ThemMoiPhanAnhController implements Initializable{
     		alert.showAndWait();
     	} else {
 	    	PhanAnhServices pas = new PhanAnhServices();
-	    	pas.insertPhanAnh(Integer.valueOf(idTf.getText()), hoTenTf.getText(), noiDungTa.getText());
+	    	pas.insertPhanAnh(Integer.parseInt(idTf.getText()), hoTenTf.getText(), noiDungTa.getText());
+	    	Dialog<String> dialog = new Dialog<>();
+            dialog.setTitle("Thông báo");
+            dialog.setContentText("Thêm mới phản ánh thành công!");
+            ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().add(type);
+            dialog.show();
 	    	themBt.getScene().getWindow().hide();
 	    	FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("phan-anh.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+	        Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 	        QuanLyNhanKhau.window.setScene(scene);
     	}
     }

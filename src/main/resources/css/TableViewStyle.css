@@ -1,9 +1,9 @@
 * {
 	-fx-primary-color: #007acc;
 	-fx-secondary-color: #4B6EAF;
-	-fx-accent-color: #B6FF00;
-	-fx-grey-color: #00ff40;
-	-fx-light-grey-color: #00ff40;
+	
+	-fx-grey-color:  #007acc;
+	-fx-light-grey-color: light-grey;
 	-fx-lightest-grey-color: #F9F9FB;
     
 	-fx-focus-color: -fx-secondary-color;

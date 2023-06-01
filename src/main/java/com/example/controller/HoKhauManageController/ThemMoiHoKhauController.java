@@ -147,17 +147,20 @@ public class ThemMoiHoKhauController  implements Initializable {
 			alert.setContentText("Vui lòng nhập hết các trường bắt buộc");
 			alert.showAndWait();
 		} else {
+			
 			HoKhauService hoKhau = new HoKhauService();
 			hoKhau.insertHoKhauMoi();
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    		alert.setTitle("Thông báo");
+    		alert.setContentText("Thêm mới hộ khẩu thành công");
+    		alert.showAndWait();
 			taoBt.getScene().getWindow().hide();
 			FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
-			Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+			Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 			QuanLyNhanKhau.window.setScene(scene);
 
 		}
 
 	}
-
-
 
 }

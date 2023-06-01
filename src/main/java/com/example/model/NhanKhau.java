@@ -306,4 +306,20 @@ public class NhanKhau {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
+
+	@Override
+	public String toString() {
+		return "NhanKhau [ID=" + ID + ", maNhanKhau=" + maNhanKhau + ", hoTen=" + hoTen + ", bietDanh=" + bietDanh
+				+ ", namSinh=" + namSinh + ", gioiTinh=" + gioiTinh + ", noiSinh=" + noiSinh + ", nguyenQuan="
+				+ nguyenQuan + ", soCMT=" + soCMT + ", danToc=" + danToc + ", tonGiao=" + tonGiao + ", quocTich="
+				+ quocTich + ", soHoChieu=" + soHoChieu + ", noiThuongTru=" + noiThuongTru + ", diaChiHienNay="
+				+ diaChiHienNay + ", trinhDoHocVan=" + trinhDoHocVan + ", trinhDoChuyenMon=" + trinhDoChuyenMon
+				+ ", bietTiengDanToc=" + bietTiengDanToc + ", trinhDoNgoaiNgu=" + trinhDoNgoaiNgu + ", ngheNghiep="
+				+ ngheNghiep + ", noiLamViec=" + noiLamViec + ", tienAn=" + tienAn + ", ngayChuyenDen=" + ngayChuyenDen
+				+ ", lyDoChuyenDen=" + lyDoChuyenDen + ", ngayChuyenDi=" + ngayChuyenDi + ", lyDoChuyenDi="
+				+ lyDoChuyenDi + ", diaChiMoi=" + diaChiMoi + ", ngayTao=" + ngayTao + ", idNguoiTao=" + idNguoiTao
+				+ ", ngayXoa=" + ngayXoa + ", idNguoiXoa=" + idNguoiXoa + ", lyDoXoa=" + lyDoXoa + ", ghiChu=" + ghiChu
+				+ "]";
+	}
+    
 }

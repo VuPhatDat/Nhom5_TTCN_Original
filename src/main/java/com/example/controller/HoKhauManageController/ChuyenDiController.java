@@ -104,7 +104,30 @@ public class ChuyenDiController implements Initializable{
             e.printStackTrace();
         }
     }
-
+    
+    public void searchMaHoKhau(ActionEvent event) {
+    	hoKhauList.clear();
+		if (nhapMaHoKhauTf.getText().trim().isEmpty()) {
+			showInfor();
+		}
+		HoKhauService nks = new HoKhauService();
+		ResultSet rs = nks.getHoKhauByMaHoKhau(nhapMaHoKhauTf.getText());
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					HoKhau hoKhau = new HoKhau();
+					hoKhau.setMaHoKhau(rs.getString("maHoKhau"));
+					hoKhau.setHoTenChuHo(rs.getString("hoTen"));
+					hoKhau.setDiaChi(rs.getString("diaChi"));
+					hoKhauList.add(hoKhau);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+    
     @FXML
     void huyBo(ActionEvent event) throws IOException {
         huyBoBt.getScene().getWindow().hide();
@@ -124,7 +147,7 @@ public class ChuyenDiController implements Initializable{
             hks.chuyenDi(idChuHo, diaChiChuyenDenTf.getText(), liDoChuyenTa.getText());
             xacNhanBt.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
             QuanLyNhanKhau.window.setScene(scene);
         }
     }

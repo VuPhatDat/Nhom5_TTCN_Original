@@ -98,7 +98,7 @@ public class DKTamTruController {
     @FXML
     void tao(ActionEvent event) throws IOException {
     	String sdt = sdtNguoiDangKiTf.getText().trim();
-    	if (sdt.isEmpty()){
+    	if (!sdt.isEmpty()){
     		 try {
                  long sdThoai = Long.parseLong(sdt);
              } catch (NumberFormatException  e) {
@@ -108,9 +108,9 @@ public class DKTamTruController {
          		 alert.setContentText("Vui lòng nhập Số Điện Thoại đúng định dạng!");
          		 alert.showAndWait();
              }
-    	}
-    	if (maGiayTamTruTf.getText().trim().isEmpty()
-                || liDoTa.getText().trim().isEmpty()) {
+    	} 
+    	else if (maGiayTamTruTf.getText().trim().isEmpty()
+                || liDoTa.getText().trim().isEmpty() || sdt.isEmpty()) {
     		Alert alert = new Alert(Alert.AlertType.WARNING);
     		alert.setTitle("cảnh báo");
     		alert.setContentText("Vui lòng nhập hết các trường bất buộc!");
@@ -136,7 +136,7 @@ public class DKTamTruController {
     		alert.showAndWait();
     		taoBt.getScene().getWindow().hide();
     		FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("nhan-khau.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+	        Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 	        QuanLyNhanKhau.window.setScene(scene);
     	}
     }

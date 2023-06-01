@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
@@ -43,6 +44,8 @@ public class PhanAnhController extends Controller implements Initializable{
     private Button themMoiBt;
     @FXML
     private Button xuLyBt;
+    @FXML 
+    private TextField searchHoTenTf;
     
     @FXML
     private TableView<PhanAnh> phanAnhTv;
@@ -70,37 +73,13 @@ public class PhanAnhController extends Controller implements Initializable{
 		showInfor();
 
 	}
-    
-    void denHoKhau(MouseEvent event) throws IOException {
-    	super.denHoKhau();
-    }
-
-    @FXML
-    void denNhanKhau(MouseEvent event) throws IOException {
-    	super.denNhanKhau();
-    }
-
-    @FXML
-    void denPhanAnh(MouseEvent event) throws IOException {
-    	super.denPhanAnh();
-    }
-
-    @FXML
-    void denThongKe(MouseEvent event) throws IOException {
-    	super.denThongKe();
-    }
-
-    @FXML
-    void denTrangChu(MouseEvent event) throws IOException {
-    	super.denTrangChu();
-    }
   
     
     public void denThemMoi(ActionEvent event) throws IOException {
     	Node node = (Node) event.getSource();
     	Stage stage = (Stage) node.getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(getClass().getResource("/com/example/main/them-moi-phan-anh.fxml"));
+    	loader.setLocation(getClass().getResource("/com/example/phananhmanage/them-moi-phan-anh.fxml"));
     	loader.load();
     	Parent root = loader.getRoot();
     	Stage modal_dialog = new Stage(StageStyle.DECORATED);
@@ -116,7 +95,7 @@ public class PhanAnhController extends Controller implements Initializable{
     	Node node = (Node) event.getSource();
     	Stage stage = (Stage) node.getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(getClass().getResource("/com/example/main/xu-ly-phan-anh.fxml"));
+    	loader.setLocation(getClass().getResource("/com/example/phananhmanage/xu-ly-phan-anh.fxml"));
     	loader.load();
     	Parent root = loader.getRoot();
     	Stage modal_dialog = new Stage(StageStyle.DECORATED);
@@ -132,6 +111,30 @@ public class PhanAnhController extends Controller implements Initializable{
     public void showInfor() {
     	PhanAnhServices conn = new PhanAnhServices();
 		ResultSet rs = conn.getPhanAnh();
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					PhanAnh phanAnh = new PhanAnh();
+					phanAnh.setID(rs.getInt("ID"));
+					phanAnh.setHoTen(rs.getString("hoTen"));
+					phanAnh.setNoiDung(rs.getString("noiDung"));
+					phanAnh.setStatus(rs.getString("status"));
+					phanAnhList.add(phanAnh);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    public void searchHoTen(ActionEvent event) {
+    	phanAnhList.clear();
+    	if (searchHoTenTf.getText().trim().isEmpty()) {
+    		showInfor();
+    	}
+    	PhanAnhServices conn = new PhanAnhServices();
+		ResultSet rs = conn.getPhanAnh(searchHoTenTf.getText().trim());
 		try {
 			if (rs != null) {
 				while (rs.next()) {

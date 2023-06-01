@@ -93,7 +93,7 @@ public class KhaiTuController {
     
     @FXML
     void check2(ActionEvent event) {
-    	String tempCMT = this.soCMTTf.getText().trim() ;
+    	String tempCMT = this.soCMTTf1.getText().trim() ;
         if (tempCMT.isEmpty()) {
         	Alert alert = new Alert(Alert.AlertType.WARNING);
     		alert.setTitle("cảnh báo");
@@ -116,7 +116,7 @@ public class KhaiTuController {
         if( tempID != -1){
         	this.soCMTTf1.setEditable(false);
         	this.checkImage1.setOpacity(1);
-            this.khaiTu.setIdNguoiKhai(tempID);
+            this.khaiTu.setIdNguoiChet(tempID);
         } else {
         	Alert alert = new Alert(Alert.AlertType.WARNING);
     		alert.setTitle("cảnh báo");
@@ -164,9 +164,6 @@ public class KhaiTuController {
     		alert.setContentText("Khai tử thành công");
     		alert.showAndWait();
     		taoBt.getScene().getWindow().hide();
-//    		FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("nhan-khau.fxml"));
-//	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-//	        QuanLyNhanKhau.window.setScene(scene);
     	}
     }
 

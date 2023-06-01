@@ -40,7 +40,7 @@ public class ChonChuHoController  implements Initializable {
 
 
 	@FXML
-	private TextField chonChuHoTf;
+	private TextField searchChuHoTf;
 	@FXML
 	private TextField chuHoTf;
 	@FXML
@@ -101,6 +101,32 @@ public class ChonChuHoController  implements Initializable {
 				}
 			}
 		});
+	}
+	
+	public void searchChuHo(ActionEvent event) {
+		chuHoList.clear();
+		if(searchChuHoTf.getText().trim().isEmpty()) {
+			showInfor();
+		}
+		NhanKhauService conn = new NhanKhauService();
+		ResultSet rs = conn.chonChuHoSelect(searchChuHoTf.getText().trim());
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					NhanKhau nk = new NhanKhau();
+					nk.setID(rs.getInt("ID"));
+					nk.setSoCMT(rs.getString("soCMT"));
+					nk.setHoTen(rs.getString("hoTen"));
+					nk.setNamSinh(rs.getDate("namSinh"));
+					nk.setGioiTinh(rs.getString("gioiTinh"));
+					nk.setDiaChiHienNay(rs.getString("diaChiHienNay"));
+					chuHoList.add(nk);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void showInfor() {

@@ -1,21 +1,40 @@
 package com.example.controller;
 
 import com.example.bean.NhanKhauBean;
+
+
+import com.example.controller.NhanKhauManageController.ThongTinNhanKhauController;
 import com.example.model.NhanKhau;
 import com.example.services.NhanKhauService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 public class ThongKeController extends Controller implements Initializable {
     @FXML
@@ -82,6 +101,35 @@ public class ThongKeController extends Controller implements Initializable {
         diaChiColumn.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("diaChiHienNay"));
         nhanKhauTable.setItems(nhanKhauList);
         showInfor();
+
+        nhanKhauTable.setOnMousePressed(new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event event) {
+                // TODO Auto-generated method stub
+                try {
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/com/example/nhankhaumanage/thong-tin-nhan-khau.fxml"));
+                    loader.load();
+                    Parent root = loader.getRoot();
+
+                    ThongTinNhanKhauController thongTinNhanKhau = loader.getController();
+                    thongTinNhanKhau.showInforByID(nhanKhauTable.getSelectionModel().getSelectedItem().getID());
+
+                    Stage modal_dialog = new Stage(StageStyle.DECORATED);
+                    modal_dialog.initModality(Modality.WINDOW_MODAL);
+                    modal_dialog.initOwner(stage);
+                    modal_dialog.setTitle("Thông tin nhân khẩu");
+                    Scene scene = new Scene(root);
+                    modal_dialog.setScene(scene);
+                    modal_dialog.show();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void showInfor() {
@@ -174,5 +222,32 @@ public class ThongKeController extends Controller implements Initializable {
 
         nhanKhauTable.setItems(nhanKhauList);
     }
+    
+    
+    public void exportCSVFile() {
 
+    	DateFormat dfm =new  SimpleDateFormat("yyyyMMddHHmmss");
+    	try {
+	        File file = new File("fileExport/" + dfm.format(new java.util.Date()) + ".csv");
+	        FileWriter fw = new FileWriter(file, true);
+	        BufferedWriter writer = new BufferedWriter( fw );
+	        for (NhanKhau i : nhanKhauList) {
+	        	String text = i.toString();
+	            writer.write(text);
+	            writer.newLine();
+	        }
+            Dialog<String> dialog = new Dialog<>();
+            dialog.setTitle("Thông báo");
+            dialog.setContentText("Xuất file thành công!!");
+            ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().add(type);
+            dialog.show();
+	        writer.close();
+	   
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }	
+	}
+	
+	
 }

@@ -14,6 +14,11 @@ public class PhanAnhServices {
 		return resultSet(query);
 	}
 	
+	public ResultSet getPhanAnh(String hoTen) {
+		String query = "SELECT ID, hoTen, noiDung, status from phan_anh where hoTen = '" + hoTen + "'";
+		return resultSet(query);
+	}
+	
 	public ResultSet getNhanKhau() {
     	String query = "SELECT ID, hoTen, namSinh, gioiTinh, diaChiHienNay FROM nhan_khau ";
     	return resultSet(query);
@@ -60,6 +65,20 @@ public class PhanAnhServices {
 			Connection connection = MySqlConnection.getMySqlConnection();
 	    	Statement statement = connection.createStatement();
 	    	String query = "UPDATE phan_anh SET status = 'Đã giải quyết' where ID = " + ID;
+	    	statement.executeUpdate(query);
+	    	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return rs;
+	}
+	
+	public ResultSet deletePhanAnh (int ID) {
+		try {
+			Connection connection = MySqlConnection.getMySqlConnection();
+	    	Statement statement = connection.createStatement();
+	    	String query = "Delete from phan_anh where ID = " + ID;
 	    	statement.executeUpdate(query);
 	    	
 		} catch (SQLException e) {
