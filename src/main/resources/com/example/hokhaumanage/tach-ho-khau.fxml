@@ -20,7 +20,7 @@
 				<HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="793.0" spacing="10.0">
 					<children>
 						<Label text="Nhập mã hộ khẩu" />
-						<TextField fx:id="maHoKhauTf" prefHeight="25.0" prefWidth="196.0" />
+						<TextField fx:id="maHoKhauTf" onAction="#searchMaHoKhau" prefHeight="25.0" prefWidth="196.0" />
 					</children>
 				</HBox>
 				<HBox prefHeight="171.0" prefWidth="793.0" spacing="20.0">

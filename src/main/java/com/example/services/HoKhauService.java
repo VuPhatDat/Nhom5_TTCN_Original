@@ -1,5 +1,6 @@
 package com.example.services;
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,11 +15,17 @@ public class HoKhauService {
 	public ResultSet rs = null;
 
 	public ResultSet getHoKhau() {
-		String query = "SELECT ho_khau.idChuHo, maHoKhau, nhan_khau.hoTen, ho_khau.diaChi, ho_khau.maKhuVuc FROM ho_khau, nhan_khau where ho_khau.idChuHo = nhan_khau.ID ";
+		String query = "SELECT ho_khau.ID, ho_khau.idChuHo, maHoKhau, nhan_khau.hoTen, ho_khau.diaChi, ho_khau.maKhuVuc FROM ho_khau, nhan_khau where ho_khau.idChuHo = nhan_khau.ID ";
 
 		return resultSet(query);
 	}
+	
+	public ResultSet getHoKhauByMaHoKhau(String maHoKhau ) {
+		String query = "SELECT ho_khau.ID, ho_khau.idChuHo, maHoKhau, nhan_khau.hoTen, ho_khau.diaChi, ho_khau.maKhuVuc FROM ho_khau, nhan_khau where ho_khau.idChuHo = nhan_khau.ID and maHoKhau = '" + maHoKhau + "'";
 
+		return resultSet(query);
+	}
+	
 	public ResultSet getThanhVien() {
 		String query = "SELECT hoTen, namSinh, thanh_vien_cua_ho.quanHeVoiChuHo FROM nhan_khau, thanh_vien_cua_ho Where thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID ";
 		return resultSet(query);
@@ -32,7 +39,10 @@ public class HoKhauService {
 	}
 
 	public ResultSet getGiaDinh(int id) {
-		String query = "Select gia_dinh.idNhanKhau, gia_dinh.hoTen, gia_dinh.namSinh, gia_dinh.quanHeVoiNhanKhau from gia_dinh, ho_khau where gia_dinh.idNhanKhau = ho_khau.idChuHo and ho_khau.idChuHo = " + id ;
+		String query = "SELECT * FROM nhan_khau INNER JOIN thanh_vien_cua_ho ON nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau "
+                + "WHERE thanh_vien_cua_ho.idHoKhau = "
+                + id;
+
 		return resultSet(query);
 	}
 
@@ -43,7 +53,7 @@ public class HoKhauService {
   
 	public ResultSet resultSet (String query) {
 		try {
-			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+			Connection connection = MySqlConnection.getMySqlConnection();
 			Statement stmt  = connection.createStatement();
 			rs    = stmt.executeQuery(query);
 
@@ -69,6 +79,7 @@ public class HoKhauService {
 			ResultSet rs = preparedStatement.getGeneratedKeys();
 			if (rs.next()) {
 				int genID = rs.getInt(1);
+				
 				String sql = "INSERT INTO thanh_vien_cua_ho(idNhanKhau, idHoKhau, quanHeVoiChuHo)"
 						+ " values (?, ?, ?)";
 				for (ThanhVienCuaHo i : DataHoKhauMoi.thanhVienCuaHoList)  {
@@ -93,33 +104,28 @@ public class HoKhauService {
 
 	public void tachHoKhau (List<ThanhVienCuaHo> thanhVienList, int idChuHoMoi) {
 		// xoa chu ho
-//		String query = "Delete from nhan_khau where ID = " + idChuHoMoi;
 		String query2 = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + idChuHoMoi;
 
 		try {
-			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement(query);
-//            preparedStatement.executeUpdate();
+			Connection connection = MySqlConnection.getMySqlConnection();
 			PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
 			preparedStatement2.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
+		System.out.println("đã xóa đc chủ hộ");
 		// xoa cac thanh vien
 		for (ThanhVienCuaHo item : thanhVienList) {
-//			String sql1 = "Delete from nhan_khau where ID = " + idChuHoMoi;
 			String sql2 = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + item.getIdNhanhKhau();
 			try {
-				Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
-//                PreparedStatement preparedStatement = connection.prepareStatement(sql1);
-//                preparedStatement.executeUpdate();
+				Connection connection = MySqlConnection.getMySqlConnection();
 				PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
 				preparedStatement2.executeUpdate();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
+		System.out.println("đã xóa đc các thành viên trong hộ mới");
 		this.insertHoKhauMoi();
 	}
 

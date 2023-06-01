@@ -1,4 +1,4 @@
-module com.example.nhom5_ttcn {
+module com.example.nhom16_cnpm {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,6 +6,7 @@ module com.example.nhom5_ttcn {
 	requires java.sql;
 	requires javafx.graphics;
 	requires javafx.base;
+
     
     opens com.example.main to javafx.fxml;
     exports com.example.main;
@@ -21,4 +22,6 @@ module com.example.nhom5_ttcn {
     
     exports com.example.controller.NhanKhauManageController;
     opens com.example.controller.NhanKhauManageController to javafx.fxml;
+    exports com.example.controller.PhanAnhManageController;
+    opens com.example.controller.PhanAnhManageController to javafx.fxml;
 }

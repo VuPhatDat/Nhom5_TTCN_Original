@@ -7,12 +7,14 @@ public class PhanAnh {
 	private String hoTen;
 	private String noiDung;
 	private String status;
-	private Button statusButton;
-	
+	private Button statusButton = new Button();
+	private Button xoaButton = new Button();
 	
 	public PhanAnh() {
 		this.setStatusButton(new Button("Duyệt"));
+		this.setXoaButton(new Button("Xóa"));
 	}
+	
 	public int getID() {
 		return ID;
 	}
@@ -42,6 +44,14 @@ public class PhanAnh {
 	}
 	public void setStatusButton(Button statusButton) {
 		this.statusButton = statusButton;
+	}
+
+	public Button getXoaButton() {
+		return xoaButton;
+	}
+
+	public void setXoaButton(Button xoaButton) {
+		this.xoaButton = xoaButton;
 	}
 	
 	

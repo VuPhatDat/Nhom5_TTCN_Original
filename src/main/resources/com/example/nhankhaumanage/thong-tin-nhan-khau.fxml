@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.NhanKhauManageController.ThongTinNhanKhauController">
+	<top>
+		<HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="507.0" spacing="10.0" BorderPane.alignment="CENTER">
+			<children>
+				<ImageView fitHeight="81.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="@../../../image/icons8_rick_sanchez_100px.png" />
+					</image>
+				</ImageView>
+				<VBox prefHeight="86.0" prefWidth="190.0" spacing="5.0">
+					<children>
+						<Label fx:id="hoTenLb" prefHeight="34.0" prefWidth="190.0" text="Họ Tên">
+							<font>
+								<Font name="System Bold" size="18.0" />
+							</font>
+						</Label>
+						<Label fx:id="bietDanhLb" prefHeight="20.0" prefWidth="190.0" text="Biệt danh">
+							<font>
+								<Font name="System Italic" size="14.0" />
+							</font>
+						</Label>
+					</children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+				</VBox>
+				<Pane prefHeight="86.0" prefWidth="66.0" />
+            <Text fx:id="queQuanT" strokeType="OUTSIDE" strokeWidth="0.0" text="Quê quán" wrappingWidth="180.154296875">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+			</children>
+		</HBox>
+	</top>
+	<center>
+		<VBox prefHeight="521.0" prefWidth="508.0" BorderPane.alignment="CENTER">
+			<children>
+				<Line endX="406.29290771484375" endY="-0.32842719554901123" startX="-100.0" />
+				<GridPane alignment="CENTER_LEFT">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Line endX="508.97125244140625" endY="94.21592712402344" fill="RED" startX="679.26416015625" startY="93.42303466796875" stroke="#00ff33" GridPane.rowIndex="2" />
+						<Label text="Ngày sinh" />
+						<Label text="Giới tính" GridPane.columnIndex="1" />
+						<Label text="Nguyên quán" GridPane.columnIndex="2" />
+						<Label text="Dân tộc" GridPane.rowIndex="3" />
+						<Label text="Tôn giáo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+						<Label text="Quốc tịch" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+						<Line endX="508.97125244140625" endY="94.21592712402344" fill="RED" startX="747.26416015625" startY="93.12379455566406" stroke="#00ff33" GridPane.rowIndex="5" />
+						<Label text="Nơi thường trú" GridPane.rowIndex="6" />
+						<Label text="Số hộ chiếu" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+						<Label text="Số CMT" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+						<Label text="Trình độ học vấn" GridPane.rowIndex="9" />
+						<Label text="Trình độ chuyên môn" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+						<Label text="Trình độ ngoại ngữ" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+						<Label text="Biết tiếng dân tộc" GridPane.rowIndex="12" />
+						<Label text="Nghề nghiệp" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+						<Label text="Nơi làm việc" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+						<Line endX="508.97125244140625" endY="94.21592712402344" fill="RED" startX="855.26416015625" startY="92.82913208007812" stroke="#00ff33" GridPane.rowIndex="8" />
+						<Line endX="508.97125244140625" endY="94.21592712402344" fill="RED" startX="970.26416015625" startY="95.60269165039062" stroke="#00ff33" GridPane.rowIndex="11" />
+						<Text fx:id="ngaySinhT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="150.13671875" GridPane.rowIndex="1" />
+						<Text fx:id="gioiTinhT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<Text fx:id="nguyenQuanT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<Text fx:id="danTocT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="4" />
+						<Text fx:id="tonGiaoT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+						<Text fx:id="quocTichT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+						<Text fx:id="noiThuongTruT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="154.13671875" GridPane.rowIndex="7" />
+						<Text fx:id="soHoChieuT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+						<Text fx:id="soCMTT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+						<Text fx:id="tdHocVanT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="10" />
+						<Text fx:id="tdChuyenMonT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+						<Text fx:id="tdNgoaiNguT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+						<Text fx:id="bietTiengDanTocT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="13" />
+						<Text fx:id="ngheNghiepT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+						<Text fx:id="noiLamViecT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+					</children>
+					<VBox.margin>
+						<Insets top="10.0" />
+					</VBox.margin>
+				</GridPane>
+			</children>
+		</VBox>
+	</center>
+	<left>
+		<Pane prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+	</left>
+	<right>
+		<Pane prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+	</right>
+	<padding>
+		<Insets top="10.0" />
+	</padding>
+</BorderPane>
