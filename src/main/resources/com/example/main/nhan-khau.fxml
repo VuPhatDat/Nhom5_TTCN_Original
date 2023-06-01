@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="591.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.NhanKhauController">
+	<left>
+		<VBox prefHeight="591.0" prefWidth="193.0" spacing="28.0" style="-fx-background-color: #b6b6b6;">
+			<Button fx:id="trangChuBt" mnemonicParsing="false" onAction="#denTrangChu" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
+				<graphic>
+					<HBox onMouseClicked="#denTrangChu" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+						<ImageView fitHeight="40" fitWidth="40">
+							<Image url="@../../../image/order.png" />
+						</ImageView>
+						<Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Trang Chủ" />
+					</HBox>
+				</graphic>
+			</Button>
+			<Button fx:id="nhanKhauBt" mnemonicParsing="false" onAction="#denNhanKhau" prefHeight="72.0" prefWidth="201.0" stylesheets="@../../../css/ButtonStyle.css">
+				<graphic>
+					<HBox onMouseClicked="#denNhanKhau" spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand">
+						<ImageView fitHeight="40" fitWidth="40">
+							<Image url="@../../../image/man.png" />
+						</ImageView>
+						<Text style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white" text="Nhân Khẩu" />
+					</HBox>
+				</graphic>
+			</Button>
+			<Button fx:id="hoKhauBt" mnemonicParsing="false" onAction="#denHoKhau" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
+				<graphic>
+					<HBox onMouseClicked="#denHoKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+						<ImageView fitHeight="40" fitWidth="40">
+							<Image url="@../../../image/house.png" />
+						</ImageView>
+						<Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Hộ Khẩu" />
+					</HBox>
+				</graphic>
+			</Button>
+			<Button fx:id="thongKeBt" mnemonicParsing="false" onAction="#denThongKe" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
+				<graphic>
+					<HBox onMouseClicked="#denThongKe" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+						<ImageView fitHeight="40" fitWidth="40">
+							<Image url="@../../../image/analysis.png" />
+						</ImageView>
+						<Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Thống Kê" />
+					</HBox>
+				</graphic>
+			</Button>
+			<Button fx:id="phanAnhBt" mnemonicParsing="false" onAction="#denPhanAnh" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
+				<graphic>
+					<HBox onMouseClicked="#denPhanAnh" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+						<ImageView fitHeight="40" fitWidth="40">
+							<Image url="@../../../image/conversation.png" />
+						</ImageView>
+						<Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Phản Ánh" />
+					</HBox>
+				</graphic>
+			</Button>
+		</VBox>
+	</left>
+	<center>
+		<BorderPane BorderPane.alignment="CENTER">
+			<center>
+				<TableView fx:id="nhanKhauTv" prefHeight="200.0" prefWidth="200.0">
+					<columns>
+						<TableColumn fx:id="idCol" prefWidth="42.0" text="ID" />
+						<TableColumn fx:id="hoTenCol" prefWidth="116.0" text="Họ tên" />
+                  <TableColumn fx:id="ngaySinhCol" prefWidth="82.0" text="Ngày sinh" />
+                  <TableColumn fx:id="gioiTinhCol" prefWidth="63.0" text="Giới tính" />
+                  <TableColumn fx:id="diaChiHienNayCol" prefWidth="155.0" text="Địa chỉ hiện nay" />
+					</columns>
+				</TableView>
+			</center>
+			<top>
+				<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+					<children>
+						<TextField prefHeight="25.0" prefWidth="324.0" />
+					</children>
+				</HBox>
+			</top>
+			<right>
+				<VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+					<children>
+						<Button fx:id="themMoiBt" mnemonicParsing="false" onAction="#themMoi" text="Thêm mới" />
+						<Button fx:id="dKTamVangBt" mnemonicParsing="false" onAction="#dkTamVang" text="Đk tạm vắng" />
+						<Button fx:id="dKTamTruBt" mnemonicParsing="false" onAction="#dkTamTru" text="ĐK tạm trú" />
+						<Button fx:id="khaiTuBt" mnemonicParsing="false" onAction="#khaiTu" text="Khai tử" />
+					</children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+				</VBox>
+			</right>
+         <padding>
+            <Insets bottom="10.0" left="5.0" />
+         </padding>
+		</BorderPane>
+	</center>
+</BorderPane>

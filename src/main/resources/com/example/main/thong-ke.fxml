@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.controller.ThongKeController">
+    <VBox style="-fx-background-color: #b6b6b6;" spacing="28">
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denTrangChu">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/order.png"/>
+            </ImageView>
+            <Text text="Trang Chủ"
+                  style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denNhanKhau">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/man.png"/>
+            </ImageView>
+            <Text text="Nhân Khẩu" style=" -fx-font-size: 24px;"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denHoKhau">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/house.png"/>
+            </ImageView>
+            <Text text="Hộ Khẩu" style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denThongKe">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/analysis.png"/>
+            </ImageView>
+            <Text text="Thống Kê" style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-font-weight: bold; -fx-fill: white"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denPhanAnh">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/conversation.png"/>
+            </ImageView>
+            <Text text="Phản Ánh" style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+    <VBox style="-fx-padding: 16 16 16 16;" spacing="24">
+        <HBox spacing="120">
+            <VBox spacing="12">
+                <HBox spacing="460">
+                    <HBox alignment="CENTER" spacing="8">
+                        <Text text="Giới tính"/>
+                        <MenuButton prefWidth="120" prefHeight="24" text="Toàn bộ" fx:id="menuGioiTinh" alignment="CENTER">
+                            <items>
+                                <MenuItem text="Toàn bộ" fx:id="gtToanBo" onAction="#chonGtToanBo"/>
+                                <MenuItem text="Nam" fx:id="gtNam" onAction="#chonGtNam"/>
+                                <MenuItem text="Nữ" fx:id="gtNu" onAction="#chonGtNu"/>
+                            </items>
+                        </MenuButton>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="8">
+                        <Text text="Trạng thái" />
+                        <MenuButton prefWidth="120" prefHeight="24" text="Toàn bộ" fx:id="menuTrangThai" alignment="CENTER">
+                            <items>
+                                <MenuItem text="Toàn bộ" fx:id="ttToanBo" onAction="#chonTtToanBo"/>
+                                <MenuItem text="Thường trú" fx:id="ttThuongTru" onAction="#chonTtThuongTru"/>
+                                <MenuItem text="Tạm trú" fx:id="ttTamTru" onAction="#chonTtTamTru"/>
+                                <MenuItem text="Tạm vắng" fx:id="ttTamVang" onAction="#chonTtTamVang"/>
+                            </items>
+                        </MenuButton>
+                    </HBox>
+                </HBox>
+                <HBox spacing="380">
+                    <HBox alignment="CENTER" spacing="12">
+                        <Text text="Độ tuổi" />
+                        <TextField prefWidth="60" fx:id="minDoTuoi"/>
+                        <ImageView>
+                            <Image url="@../../../image/right-arrows.png" />
+                        </ImageView>
+                        <TextField prefWidth="60" fx:id="maxDoTuoi"/>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="12">
+                        <Text text="Năm" />
+                        <TextField prefWidth="60" fx:id="minNam"/>
+                        <ImageView>
+                            <Image url="@../../../image/right-arrows.png" />
+                        </ImageView>
+                        <TextField prefWidth="60" fx:id="maxNam"/>
+                    </HBox>
+                </HBox>
+            </VBox>
+            <VBox spacing="12">
+                <Button prefWidth="80" text="Show" fx:id="showButton" onAction="#showData"/>
+                <Button prefWidth="80" text="Xuất file" fx:id="exportButton"/>
+            </VBox>
+        </HBox>
+        <TableView fx:id="nhanKhauTable">
+            <columns>
+                <TableColumn text="ID" prefWidth="60" fx:id="idColumn" style="-fx-alignment: CENTER"/>
+                <TableColumn text="Họ tên" prefWidth="160" fx:id="hoTenColumn"/>
+                <TableColumn text="Ngày sinh" prefWidth="160" fx:id="ngaySinhColumn"/>
+                <TableColumn text="Giới tính" prefWidth="160" fx:id="gioiTinhColumn"/>
+                <TableColumn text="Địa chỉ hiện nay" prefWidth="434" fx:id="diaChiColumn"/>
+            </columns>
+        </TableView>
+    </VBox>
+</HBox>
